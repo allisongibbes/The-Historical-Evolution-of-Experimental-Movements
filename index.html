@@ -53,7 +53,7 @@
     font-size: 0.95rem;
     color: #1e293b;
     text-align: left;
-    min-height: 90px;
+    min-height: 110px;
     line-height: 1.4;
   }
 </style>
@@ -74,7 +74,7 @@
   </div>
 
   <div class="description-box" id="histDesc">
-    <strong>The 1920s European Avant-Garde (Dadaism & Surrealism):</strong> Mocking traditional logic, unlocking the subconscious, and embracing dream-states (Luis Buñuel & Salvador Dalí, <em>Un Chien Andalou</em>, 1929).
+    <strong>The 1920s European Avant-Garde (Dadaism & Surrealism):</strong> Emerging in post-WWI Europe, this movement rejected rational bourgeois logic and narrative cause-and-effect. Influenced by psychoanalysis, artists sought to bypass the conscious mind entirely, using jarring juxtapositions, dream-states, and shocking imagery (such as the razor-blade eye slice) to unlock the subconscious. <em>Landmark Work: Un Chien Andalou (Luis Buñuel & Salvador Dalí, 1929).</em>
   </div>
 </div>
 
@@ -86,44 +86,58 @@
   const historyModes = {
     avant: {
       svg: `<svg width="450" height="250" viewBox="0 0 450 250">
-              <rect x="75" y="45" width="300" height="150" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
-              <text x="225" y="75" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="middle">1920s EUROPEAN AVANT-GARDE</text>
-              <circle cx="225" cy="125" r="35" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="6,4"/>
-              <text x="225" y="120" fill="#f3f4f6" font-size="11" text-anchor="middle">Dadaism & Surrealism</text>
-              <text x="225" y="138" fill="#38bdf8" font-size="10" text-anchor="middle">Unlocking the Subconscious</text>
-              <text x="225" y="215" fill="#94a3b8" font-size="11" text-anchor="middle">Landmark: Un Chien Andalou (1929)</text>
+              <rect x="50" y="30" width="350" height="190" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+              <!-- Surreal graphic elements: floating eye & razor -->
+              <ellipse cx="225" cy="100" rx="45" ry="25" fill="none" stroke="#c084fc" stroke-width="2"/>
+              <circle cx="225" cy="100" r="12" fill="#c084fc"/>
+              <line x1="170" y1="135" x2="280" y2="75" stroke="#f43f5e" stroke-width="3" stroke-linecap="round"/>
+              <text x="225" y="160" fill="#f3f4f6" font-size="11" font-weight="bold" text-anchor="middle">Dadaism & Surrealism: Subverting Logic</text>
+              <text x="225" y="180" fill="#cbd5e1" font-size="10" text-anchor="middle">Unlocking dream states and bypassing rational thought</text>
+              <text x="225" y="205" fill="#38bdf8" font-size="11" text-anchor="middle">Un Chien Andalou (1929)</text>
             </svg>`,
-      text: "<strong>The 1920s European Avant-Garde (Dadaism & Surrealism):</strong> Mocking traditional logic, unlocking the subconscious, and embracing dream-states (Luis Buñuel & Salvador Dalí, <em>Un Chien Andalou</em>, 1929)."
+      text: "<strong>The 1920s European Avant-Garde (Dadaism & Surrealism):</strong> Emerging in post-WWI Europe, this movement rejected rational bourgeois logic and narrative cause-and-effect. Influenced by psychoanalysis, artists sought to bypass the conscious mind entirely, using jarring juxtapositions, dream-states, and shocking imagery (such as the razor-blade eye slice) to unlock the subconscious. <em>Landmark Work: Un Chien Andalou (Luis Buñuel & Salvador Dalí, 1929).</em>"
     },
     kino: {
       svg: `<svg width="450" height="250" viewBox="0 0 450 250">
-              <rect x="75" y="45" width="300" height="150" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
-              <text x="225" y="75" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">SOVIET KINO-EYE (1920s)</text>
-              <rect x="190" y="95" width="70" height="50" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-              <circle cx="225" cy="120" r="16" fill="none" stroke="#38bdf8" stroke-width="2"/>
-              <text x="225" y="215" fill="#94a3b8" font-size="11" text-anchor="middle">Landmark: Man with a Movie Camera (Dziga Vertov, 1929)</text>
+              <rect x="50" y="30" width="350" height="190" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+              <!-- Kino-Eye graphic: mechanical camera lens + film strip montage -->
+              <circle cx="225" cy="95" r="30" fill="none" stroke="#38bdf8" stroke-width="3"/>
+              <circle cx="225" cy="95" r="10" fill="#38bdf8"/>
+              <rect x="150" y="135" width="150" height="16" rx="2" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="180" y1="135" x2="180" y2="151" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="210" y1="135" x2="210" y2="151" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="240" y1="135" x2="240" y2="151" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="270" y1="135" x2="270" y2="151" stroke="#38bdf8" stroke-width="1.5"/>
+              <text x="225" y="178" fill="#f3f4f6" font-size="11" font-weight="bold" text-anchor="middle">The Machine Eye & Dialectical Montage</text>
+              <text x="225" y="205" fill="#93c5fd" font-size="11" text-anchor="middle">Man with a Movie Camera (Dziga Vertov, 1929)</text>
             </svg>`,
-      text: "<strong>Soviet Kino-Eye (1920s):</strong> Believing the camera lens sees reality better than the human eye; treating editing as a collision of ideas (montage) (Dziga Vertov, <em>Man with a Movie Camera</em>, 1929)."
+      text: "<strong>Soviet Kino-Eye (1920s):</strong> Led by theorist-filmmakers like Dziga Vertov, this movement argued that the mechanical camera lens (*Kino-Eye*) is superior to the human eye because it can record, speed up, slow down, and synthesize reality. It treated editing not as a storytelling tool, but as a collision of visual ideas (montage) to expose truths hidden from normal sight. <em>Landmark Work: Man with a Movie Camera (Dziga Vertov, 1929).</em>"
     },
     underground: {
       svg: `<svg width="450" height="250" viewBox="0 0 450 250">
-              <rect x="75" y="45" width="300" height="150" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
-              <text x="225" y="75" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">POST-WAR AMERICAN UNDERGROUND</text>
-              <path d="M 150 130 Q 225 90 300 130" fill="none" stroke="#34d399" stroke-width="3"/>
-              <text x="225" y="155" fill="#f3f4f6" font-size="10" text-anchor="middle">1940s–1960s • Internal Psychology & Myth-Making</text>
-              <text x="225" y="215" fill="#94a3b8" font-size="11" text-anchor="middle">Landmark: Meshes of the Afternoon (Maya Deren, 1943)</text>
+              <rect x="50" y="30" width="350" height="190" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+              <!-- US Underground: psychological mirror / trance film spiral -->
+              <path d="M 175 100 Q 225 60 275 100 Q 275 140 225 120 Q 175 100 175 140" fill="none" stroke="#34d399" stroke-width="3"/>
+              <circle cx="225" cy="110" r="6" fill="#34d399"/>
+              <text x="225" y="165" fill="#f3f4f6" font-size="11" font-weight="bold" text-anchor="middle">Poetic Personal Expression & Inner Psyche</text>
+              <text x="225" y="183" fill="#cbd5e1" font-size="10" text-anchor="middle">Tracing trance states, subjective memory, and ritual</text>
+              <text x="225" y="205" fill="#6ee7b7" font-size="11" text-anchor="middle">Meshes of the Afternoon (Maya Deren, 1943)</text>
             </svg>`,
-      text: "<strong>Post-War American Underground (1940s–1960s):</strong> Exploring internal psychology, poetic personal expression, and myth-making (Maya Deren, <em>Meshes of the Afternoon</em>, 1943)."
+      text: "<strong>Post-War American Underground (1940s–1960s):</strong> Shifting away from European political avant-gardes, American experimentalists (often working independently in cities like New York and San Francisco) focused on interior psychology, poetic personal expression, and myth-making. Often called 'trance films,' these works explored subjective memory, dream logic, and ritual. <em>Landmark Work: Meshes of the Afternoon (Maya Deren, 1943).</em>"
     },
     structural: {
       svg: `<svg width="450" height="250" viewBox="0 0 450 250">
-              <rect x="75" y="45" width="300" height="150" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
-              <text x="225" y="75" fill="#f43f5e" font-size="12" font-weight="bold" text-anchor="middle">STRUCTURAL FILM (1960s–1970s)</text>
-              <line x1="125" y1="120" x2="325" y2="120" stroke="#f43f5e" stroke-width="3" stroke-dasharray="10,5"/>
-              <text x="225" y="150" fill="#f3f4f6" font-size="10" text-anchor="middle">Material Shape of Film, Duration & Mechanics</text>
-              <text x="225" y="215" fill="#94a3b8" font-size="11" text-anchor="middle">Landmark: Wavelength (Michael Snow, 1967)</text>
+              <rect x="50" y="30" width="350" height="190" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+              <!-- Structural film: minimalist grid / geometric zoom box -->
+              <rect x="185" y="65" width="80" height="60" fill="none" stroke="#f43f5e" stroke-width="2"/>
+              <rect x="200" y="77" width="50" height="36" fill="none" stroke="#fda4af" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <line x1="185" y1="65" x2="140" y2="45" stroke="#f43f5e" stroke-width="1" stroke-dasharray="2,2"/>
+              <line x1="265" y1="65" x2="310" y2="45" stroke="#f43f5e" stroke-width="1" stroke-dasharray="2,2"/>
+              <text x="225" y="155" fill="#f3f4f6" font-size="11" font-weight="bold" text-anchor="middle">Material Shape, Duration & Mechanical Process</text>
+              <text x="225" y="175" fill="#cbd5e1" font-size="10" text-anchor="middle">Emphasizing the physical apparatus and fixed camera setups</text>
+              <text x="225" y="202" fill="#fda4af" font-size="11" text-anchor="middle">Wavelength (Michael Snow, 1967)</text>
             </svg>`,
-      text: "<strong>Structural Film (1960s–1970s):</strong> Focusing heavily on the material shape of film, duration, and mechanical processes (Michael Snow, <em>Wavelength</em>, 1967)."
+      text: "<strong>Structural Film (1960s–1970s):</strong> Stripping away psychological and narrative pretext entirely, Structural filmmakers focused on the material reality of the film medium itself. They explored strip grain, sprocket holes, flicker effects, fixed camera positions, and extreme duration (such as a 45-minute continuous zoom across a room) to make the audience acutely aware of watching projected light on a flat screen. <em>Landmark Work: Wavelength (Michael Snow, 1967).</em>"
     }
   };
 
