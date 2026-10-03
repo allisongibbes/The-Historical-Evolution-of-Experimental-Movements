@@ -1,0 +1,136 @@
+<style>
+  .history-widget {
+    font-family: Arial, sans-serif;
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: #f4f6f8;
+    text-align: center;
+  }
+
+  .stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #0b0f19;
+    border: 2px solid #334155;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .hist-btn {
+    padding: 10px 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+
+  .hist-btn:hover { background-color: #e2e8f0; }
+  .hist-btn.active { background-color: #7c3aed; color: white; border-color: #6d28d9; }
+
+  .description-box {
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.95rem;
+    color: #1e293b;
+    text-align: left;
+    min-height: 90px;
+    line-height: 1.4;
+  }
+</style>
+
+<div class="history-widget">
+  <h2>Historical Evolution of Experimental Movements</h2>
+  <p>Explore the foundational eras that broke cinematic rules first, from 1920s Surrealism to Structural Film.</p>
+
+  <div class="stage" id="histStage">
+    <!-- Rendered dynamically via JS -->
+  </div>
+
+  <div class="nav-grid">
+    <button class="hist-btn active" onclick="setHistoryMode('avant')">1. 1920s Avant-Garde</button>
+    <button class="hist-btn" onclick="setHistoryMode('kino')">2. Soviet Kino-Eye</button>
+    <button class="hist-btn" onclick="setHistoryMode('underground')">3. Post-War US</button>
+    <button class="hist-btn" onclick="setHistoryMode('structural')">4. Structural Film</button>
+  </div>
+
+  <div class="description-box" id="histDesc">
+    <strong>The 1920s European Avant-Garde (Dadaism & Surrealism):</strong> Mocking traditional logic, unlocking the subconscious, and embracing dream-states (Luis Buñuel & Salvador Dalí, <em>Un Chien Andalou</em>, 1929).
+  </div>
+</div>
+
+<script>
+  const histStage = document.getElementById('histStage');
+  const histDesc = document.getElementById('histDesc');
+  const histButtons = document.querySelectorAll('.history-widget .hist-btn');
+
+  const historyModes = {
+    avant: {
+      svg: `<svg width="450" height="250" viewBox="0 0 450 250">
+              <rect x="75" y="45" width="300" height="150" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+              <text x="225" y="75" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="middle">1920s EUROPEAN AVANT-GARDE</text>
+              <circle cx="225" cy="125" r="35" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="6,4"/>
+              <text x="225" y="120" fill="#f3f4f6" font-size="11" text-anchor="middle">Dadaism & Surrealism</text>
+              <text x="225" y="138" fill="#38bdf8" font-size="10" text-anchor="middle">Unlocking the Subconscious</text>
+              <text x="225" y="215" fill="#94a3b8" font-size="11" text-anchor="middle">Landmark: Un Chien Andalou (1929)</text>
+            </svg>`,
+      text: "<strong>The 1920s European Avant-Garde (Dadaism & Surrealism):</strong> Mocking traditional logic, unlocking the subconscious, and embracing dream-states (Luis Buñuel & Salvador Dalí, <em>Un Chien Andalou</em>, 1929)."
+    },
+    kino: {
+      svg: `<svg width="450" height="250" viewBox="0 0 450 250">
+              <rect x="75" y="45" width="300" height="150" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+              <text x="225" y="75" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">SOVIET KINO-EYE (1920s)</text>
+              <rect x="190" y="95" width="70" height="50" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+              <circle cx="225" cy="120" r="16" fill="none" stroke="#38bdf8" stroke-width="2"/>
+              <text x="225" y="215" fill="#94a3b8" font-size="11" text-anchor="middle">Landmark: Man with a Movie Camera (Dziga Vertov, 1929)</text>
+            </svg>`,
+      text: "<strong>Soviet Kino-Eye (1920s):</strong> Believing the camera lens sees reality better than the human eye; treating editing as a collision of ideas (montage) (Dziga Vertov, <em>Man with a Movie Camera</em>, 1929)."
+    },
+    underground: {
+      svg: `<svg width="450" height="250" viewBox="0 0 450 250">
+              <rect x="75" y="45" width="300" height="150" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+              <text x="225" y="75" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">POST-WAR AMERICAN UNDERGROUND</text>
+              <path d="M 150 130 Q 225 90 300 130" fill="none" stroke="#34d399" stroke-width="3"/>
+              <text x="225" y="155" fill="#f3f4f6" font-size="10" text-anchor="middle">1940s–1960s • Internal Psychology & Myth-Making</text>
+              <text x="225" y="215" fill="#94a3b8" font-size="11" text-anchor="middle">Landmark: Meshes of the Afternoon (Maya Deren, 1943)</text>
+            </svg>`,
+      text: "<strong>Post-War American Underground (1940s–1960s):</strong> Exploring internal psychology, poetic personal expression, and myth-making (Maya Deren, <em>Meshes of the Afternoon</em>, 1943)."
+    },
+    structural: {
+      svg: `<svg width="450" height="250" viewBox="0 0 450 250">
+              <rect x="75" y="45" width="300" height="150" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+              <text x="225" y="75" fill="#f43f5e" font-size="12" font-weight="bold" text-anchor="middle">STRUCTURAL FILM (1960s–1970s)</text>
+              <line x1="125" y1="120" x2="325" y2="120" stroke="#f43f5e" stroke-width="3" stroke-dasharray="10,5"/>
+              <text x="225" y="150" fill="#f3f4f6" font-size="10" text-anchor="middle">Material Shape of Film, Duration & Mechanics</text>
+              <text x="225" y="215" fill="#94a3b8" font-size="11" text-anchor="middle">Landmark: Wavelength (Michael Snow, 1967)</text>
+            </svg>`,
+      text: "<strong>Structural Film (1960s–1970s):</strong> Focusing heavily on the material shape of film, duration, and mechanical processes (Michael Snow, <em>Wavelength</em>, 1967)."
+    }
+  };
+
+  function setHistoryMode(mode) {
+    histButtons.forEach(b => b.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    histStage.innerHTML = historyModes[mode].svg;
+    histDesc.innerHTML = historyModes[mode].text;
+  }
+</script>
